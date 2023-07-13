@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{811515D9-5DC7-4FEA-B759-C8813DA8F96E}|https">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="BackendSolution/Controllers/RegisterController.cs">
+    <Files>
+      <File FileName="BackendSolution/Controllers/RegisterController.cs" Line="38" Column="10" />
+      <File FileName="BackendSolution/Service/PersonService.cs" Line="11" Column="12" />
+      <File FileName="BackendSolution/Helper/EmailSender.cs" Line="31" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BackendSolution" expanded="True">
+            <Node name="BackendSolution">
+              <Node name="Controllers" expanded="True">
+                <Node name="RegisterController.cs" selected="True" />
+              </Node>
+              <Node name="Helper" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.BackendSolution PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
