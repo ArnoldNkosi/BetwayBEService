@@ -1,9 +1,4 @@
 ﻿using AuthService.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace AuthService.Services
 {
@@ -18,11 +13,11 @@ namespace AuthService.Services
             _logger = logger;
         }
 
-        public async Task<List<Person>> GetAllPersonsAsync()
+        public List<Person> GetAllPersons()
         {
             try
             {
-                return await _dbContext.Persons.ToListAsync();
+                return _dbContext.Persons.ToList();
             }
             catch (Exception ex)
             {
@@ -31,11 +26,11 @@ namespace AuthService.Services
             }
         }
 
-        public async Task<Person> GetPersonByIdAsync(int id)
+        public Person GetPersonById(Guid id)
         {
             try
             {
-                return await _dbContext.Persons.FindAsync(id);
+                return _dbContext.Persons.Find(id);
             }
             catch (Exception ex)
             {
@@ -44,12 +39,12 @@ namespace AuthService.Services
             }
         }
 
-        public async Task CreatePersonAsync(Person person)
+        public void CreatePerson(Person person)
         {
             try
             {
                 _dbContext.Persons.Add(person);
-                await _dbContext.SaveChangesAsync();
+                 _dbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -58,12 +53,12 @@ namespace AuthService.Services
             }
         }
 
-        public async Task UpdatePersonAsync(Person person)
+        public void UpdatePerson(Person person)
         {
             try
             {
                 _dbContext.Persons.Update(person);
-                await _dbContext.SaveChangesAsync();
+                 _dbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -72,15 +67,15 @@ namespace AuthService.Services
             }
         }
 
-        public async Task DeletePersonAsync(int id)
+        public void DeletePerson(Guid id)
         {
             try
             {
-                var person = await _dbContext.Persons.FindAsync(id);
+                var person =  _dbContext.Persons.Find(id);
                 if (person != null)
                 {
                     _dbContext.Persons.Remove(person);
-                    await _dbContext.SaveChangesAsync();
+                     _dbContext.SaveChanges();
                 }
             }
             catch (Exception ex)

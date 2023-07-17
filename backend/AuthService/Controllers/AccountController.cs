@@ -21,7 +21,7 @@ namespace AuthService.Controllers
 
         [HttpGet]
         [Route("healthCheck")]
-        public async Task<IActionResult> healthCheck()
+        public IActionResult healthCheck()
         {
             return Ok();
         }
@@ -30,22 +30,27 @@ namespace AuthService.Controllers
         [HttpGet]
         [Route("GetUser")]
 
-        public async Task<IActionResult> GetUserDetails()
+        public IActionResult GetUserDetails(Guid id)
         {
-            var person = new List<Person>
-            { new Person { Id = 1,Name="Arnold",surname="Nkosi", Address= new Address{Country="South Africa",PostalCode="2196",City="Johannesburg",Region="Gauteng" },Contact=new Contact{Email="arnoldNkosi97@gmail.com"}}};
+            if (id != null)
+            {
+                var person = _personService.GetPersonById(id);
+                if (person != null) return Ok(person);
+                else return Ok("Person not found");
+            }
 
-            return Ok(person);
+            return BadRequest("id is null");
+
         }
 
         [HttpPost]
         [Route("CreateUser")]
 
-        public async Task<IActionResult> CreateUser(Person person)
+        public IActionResult CreateUser(Person person)
         {
             if (person != null)
             {
-                _personService.CreatePersonAsync(person);
+                _personService.CreatePerson(person);
                 return Ok();
             }
 
@@ -58,12 +63,12 @@ namespace AuthService.Controllers
         [HttpGet]
         [Route("DeleteUser")]
 
-        public async Task<IActionResult> DeleteUser(Guid id)
+        public IActionResult DeleteUser(Guid id)
         {
             if (id != null)
             {
 
-                _personService.DeletePersonAsync(id);
+                _personService.DeletePerson(id);
                 return Ok();
 
             }
@@ -76,11 +81,11 @@ namespace AuthService.Controllers
         [HttpGet]
         [Route("UpdateUser")]
 
-        public async Task<IActionResult> UpdateUser(Person person)
+        public IActionResult UpdateUser(Person person)
         {
             if (person != null)
             {
-                _personService.UpdatePersonAsync(person);
+                _personService.UpdatePerson(person);
                 return Ok();
             }
 
